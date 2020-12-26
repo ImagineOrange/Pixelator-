@@ -52,7 +52,7 @@ def pixelizer(img,LVL): #resizes pixel with bilinear interpolation
     reform.save('TEMP.JPG')
     pixel = reform.resize(img.size,Image.NEAREST) #image resized to original image resolution 
     pixel.show()
-    again = str(input("Would you like to pixelate again? (Y/N): "))
+    again = input("\nType 'Y' to pixelate again. Type 'N' to exit program. Otherwise, type 'save' to save the pixelated image. ")
     if again == 'N':
         print("\nThank you!")
         pixel.close()
@@ -60,13 +60,23 @@ def pixelizer(img,LVL): #resizes pixel with bilinear interpolation
     elif again == 'Y':
         print('\n******************************\n')
         main()
+    elif again == 'save':
+        saver(pixel)
     else:
         print("Error, invalid input. Restarting program.")
 
-#     saver(img) 
 
-# def saver():
-    
+def saver(pixel): #function saves image according to inputted filename
+    filename = input('Save image as: ')
+    pixel.save(filename)
+    again = input("\nType 'Y' to pixelate again. Type 'N' to exit program. ")
+    if again == 'N':
+        print("\nThank you!")
+        pixel.close()
+        sys.exit()
+    elif again == 'Y':
+        print('\n******************************\n')
+        main()
 
 main()
 
