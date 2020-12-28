@@ -68,7 +68,13 @@ def pixelizer(img,LVL): #resizes pixel with bilinear interpolation
 
 def saver(pixel): #function saves image according to inputted filename
     filename = input('Save image as: ')
-    pixel.save(filename)
+    try:
+        pixel.save(filename)
+    except ValueError:
+        print("\nError, unknown file extension. Try .PDF or .JPG ")
+        time.sleep(1)
+        saver(pixel)
+        
     again = input("\nType 'Y' to pixelate again. Type 'N' to exit program. ")
     if again == 'N':
         print("\nThank you!")
