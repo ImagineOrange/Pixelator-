@@ -64,6 +64,7 @@ def pixelizer(img,LVL): #resizes pixel with bilinear interpolation
         saver(pixel)
     else:
         print("Error, invalid input. Restarting program.")
+        main()
 
 
 def saver(pixel): #function saves image according to inputted filename
